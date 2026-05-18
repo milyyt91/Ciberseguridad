@@ -1,8 +1,7 @@
 # Ciberseguridad
 Tarea dia del niño
 Este proyecto contiene tres funciones desarrolladas en Google Apps Script (GAS) para procesar y consultar una base de datos de juegos de mesa almacenada en Google Sheets. Utiliza funciones base (`leerCelda`, `leerCeldas`, `setCelda`) para la lectura y escritura de datos.
-
-## Prácticas Utilizadas y Resolución de Problemas
+# Prácticas Utilizadas y Resolución de Problemas
 
 1. **Uso de Funciones Base (Abstracción):**
    Se utilizaron las funciones de apoyo `leerCeldas()` para obtener la matriz completa de datos. Esto optimiza el código porque evita llamar a la API de Spreadsheet varias veces, leyendo toda la hoja en una sola ejecución y procesándola en memoria mediante arreglos bidimensionales (Arrays).
