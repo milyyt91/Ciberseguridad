@@ -1,0 +1,22 @@
+# Tarea: Funciones de Filtrado y Combinación de Juegos de Mesa en GAS
+
+## Descripción del Proyecto
+Este proyecto contiene tres funciones desarrolladas en Google Apps Script (GAS) para procesar y consultar una base de datos de juegos de mesa almacenada en Google Sheets. Utiliza funciones base (`leerCelda`, `leerCeldas`, `setCelda`) para la lectura y escritura de datos.
+
+## Prácticas Utilizadas y Resolución de Problemas
+
+1. **Uso de Funciones Base (Abstracción):**
+   Se utilizaron las funciones de apoyo `leerCeldas()` para obtener la matriz completa de datos. Esto optimiza el código porque evita llamar a la API de Spreadsheet varias veces, leyendo toda la hoja en una sola ejecución y procesándola en memoria mediante arreglos bidimensionales (Arrays).
+
+2. **Resolución de la Función `lsc(categoria)`:**
+   Se implementó un ciclo `for` que itera sobre todas las filas de la matriz de datos (saltando la fila 0, que contiene los encabezados). Se evalúa si el valor de la columna 2 (Categoría) coincide con el parámetro ingresado. Si es así, se guarda el nombre del juego (columna 1) en un arreglo de resultados.
+
+3. **Resolución de la Función `lsj(numeroJugadores)`:**
+   Similar a la lógica anterior, pero en lugar de buscar coincidencias exactas, se evalúa un rango. Se verifica si el `numeroJugadores` es mayor o igual a `J_Mínimos` (columna 3) y menor o igual a `J_Máximos` (columna 4).
+
+4. **Resolución de la Función `lsb(DineroPresupuesto)`:**
+   Este es un problema clásico de combinatoria (similar al problema de la mochila o *Knapsack problem*). 
+   - Primero, se filtraron los juegos extrayendo su nombre (columna 1) y precio (columna 7).
+   - Se construyó una función **recursiva** (`buscarCombos`) que explora las posibles combinaciones de juegos.
+   - Para evitar combinaciones infinitas, la recursividad tiene dos condiciones estrictas: 1) Que el costo sumado no supere el presupuesto y 2) Que el combo contenga al menos 2 juegos.
+   - Se agregó un límite de seguridad para detener la búsqueda al encontrar los primeros 50 combos y evitar que el script exceda el tiempo límite de ejecución de Google.
